@@ -6,7 +6,6 @@ import "./App.css";
 
 function App() {
   const [htmlCode, setHtmlCode] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const handleGenerate = async (prompt) => {
     setLoading(true); // Show loading state
