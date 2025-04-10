@@ -2,13 +2,13 @@ import OpenAI from "openai";
 
 const openai = new OpenAI({
   apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-  dangerouslyAllowBrowser: true, // ⚠️ Required for frontend use (temporary for hackathon)
+  dangerouslyAllowBrowser: true,
 });
 
 export async function generateHTML(prompt) {
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4o", // ✅ Use GPT-4o for better performance
+      model: "gpt-4o",
       messages: [
         {
           role: "system",
@@ -24,7 +24,7 @@ export async function generateHTML(prompt) {
 
     return response.choices[0].message.content
       .replace(/```html|```/g, "")
-      .trim(); // ✅ Extracts generated HTML
+      .trim(); // Extracts generated HTML
   } catch (error) {
     console.error("Error fetching from OpenAI:", error);
     return "<p>Error generating component</p>"; // Fallback HTML
